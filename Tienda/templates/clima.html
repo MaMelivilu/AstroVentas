@@ -1,0 +1,89 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Inicio</title>
+<link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+<link rel="stylesheet" href="{% static 'css/clima.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" data-bs-theme="dark">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Carrito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <table class="table table-striped-columns">
+            <thead>
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for c in car %}
+              <tr>
+                <td style="display: flex; align-items: center;">
+                    <img src="{{c.image.url}}" alt="{{c.nombre}}" style="width: 100px; height: 100px; object-fit: cover; margin-right: 15px;">
+                    {{c.nombre}}
+                </td>
+                <td>{{c.total_precio}}</td>
+                <td>
+                    {{c.cantidad}}
+                    <a href="aumentar/{{c.id}}" style="font-size: 25px; ">+</a>
+                    <a href="disminuir/{{c.id}}" style="font-size: 25px; ">-</a>
+                    <a href="eliminarCarrito/{{ c.id }}" class="btn btn-danger my-2">Eliminar</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <button class="btn btn-success">Comprar</button>
+        
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="h1 my-5 text-center border-bottom" style="white-space: pre-line;">¿Quiere ver su Clima?
+        <i class="bi bi-cloud-drizzle"></i>
+    </div>
+</div>
+<section class="weather-content">
+    <h1>Buscador del clima</h1>
+    <div class="result">
+        <p>Agrege Ciudad y Pais</p>
+       
+    </div>
+    <form action="" method="POST" class="get-weather">
+        <input type="text" name="city" id="city" placeholder="Escribe tu ciudad...">
+        <select name="" id="country">
+            <option disabled selected value="">Select the country</option>
+            <option value="AR">Argentina</option>
+            <option value="CO">Colombia</option>
+            <option value="CR">Costa Rica</option>
+            <option value="ES">España</option>
+            <option value="US">Estados Unidos</option>
+            <option value="MX">México</option>
+            <option value="PE">Perú</option>
+            <option value="CL">Chile</option>
+        </select>
+        <input type="submit" name="" id="" value="Get Weather">
+    </form>
+</section>
+
+<div class="container-fluid">
+    <div class="h1 my-5 text-center border-bottom"></div>
+    <div class="h5 my-3 text-center">AstroCorp | Todos los derechos reservados | Santiago de Chile</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/clima.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJjKZrYM80SjdaM-0ZdcGpDsqJ4Pu3Tgs&callback=iniciarMap"></script>
+{% endblock %}
+
+

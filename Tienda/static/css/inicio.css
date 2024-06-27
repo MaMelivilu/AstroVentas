@@ -1,0 +1,30 @@
+.descripcion{
+    position: absolute; 
+    top: 60%; 
+    left: 39%; 
+    transform: translate(-50%, -50%); 
+    color: white; 
+    font-size: 19px; 
+    background-color: rgba(31, 30, 30, 0.5); 
+    padding: 10px; 
+    border-radius: 20px; 
+    white-space: pre-line;
+    text-align: center;
+}
+
+.titulo{
+    position: absolute; 
+    top: 40%; 
+    left: 25%; 
+    transform: translate(-50%, -50%); 
+    color: white; 
+    font-size: 3rem; 
+    background-color: rgb(31, 30, 30, 0.5); 
+    padding: 10px; 
+    border-radius: 20px;
+}
+
+.image{
+    filter: blur(4px);
+}
+
